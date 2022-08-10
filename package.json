@@ -4,7 +4,8 @@
   "description": "Form management library for React",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
   "scripts": {
     "build": "tsc"
   },

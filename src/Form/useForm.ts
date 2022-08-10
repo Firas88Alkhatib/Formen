@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { IChangeObject, IValidObject, ITouchObject, EventsNames } from 'types'
-import { invalidSubmitEvent, dispachEventAll } from 'Utilities'
+import { IChangeObject, IValidObject, ITouchObject, EventsNames } from '../types'
+import { invalidSubmitEvent, dispachEventAll } from '../Utilities'
 
 interface IUseFormProps {
   onSubmit: (values: any) => void

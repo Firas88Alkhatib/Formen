@@ -1,4 +1,4 @@
-import { EventsNames, IChangeObject, IValidObject, ITouchObject, IValidatingObject } from 'types'
+import { EventsNames, IChangeObject, IValidObject, ITouchObject, IValidatingObject } from '../types'
 
 export const changeEvent = (data: IChangeObject) => {
   return new CustomEvent<IChangeObject>(EventsNames.change, { detail: data })

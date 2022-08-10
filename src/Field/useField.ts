@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { changeEvent, validEvent } from 'Utilities'
-import { ValidationFunction, EventsNames, ValidFieldElement } from 'types'
+import { changeEvent, validEvent } from '../Utilities'
+import { ValidationFunction, EventsNames, ValidFieldElement } from '../types'
 
 interface IUseFieldProps {
   name: string
