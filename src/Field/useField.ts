@@ -10,7 +10,7 @@ interface IUseFieldProps {
 export const useField = ({ name, validation, initialValue }: IUseFieldProps) => {
   const [element, setElement] = useState<ValidFieldElement | null>(null)
   const [fieldValue, setFieldValue] = useState<string>(initialValue || '')
-  const [isValid, setIsValid] = useState<boolean>(!validation?.(initialValue) || true)
+  const [error, setError] = useState<string | undefined>(validation?.(initialValue))
   const [isTouched, setIsTouched] = useState(false)
 
   useEffect(() => {
@@ -24,16 +24,16 @@ export const useField = ({ name, validation, initialValue }: IUseFieldProps) => 
   }, [element])
 
   useEffect(() => {
-    element?.form?.dispatchEvent(validEvent({ name, isValid }))
-  }, [element, isValid])
+    element?.form?.dispatchEvent(validEvent({ name, isValid: !error }))
+  }, [element, error])
 
   const onChange = (changeValue: any) => {
-    setIsValid(!validation?.(changeValue))
+    setError(validation?.(changeValue))
     element?.form?.dispatchEvent(changeEvent({ name, value: changeValue }))
     setFieldValue(changeValue)
   }
 
-  const fieldRef = (node: HTMLInputElement) => setElement(node)
+  const fieldRef = (node: ValidFieldElement | null) => setElement(node)
 
-  return { onChange, fieldRef, fieldName: name, fieldValue, isTouched, setIsTouched, isValid }
+  return { onChange, fieldRef, fieldName: name, fieldValue, isTouched, setIsTouched, error }
 }
